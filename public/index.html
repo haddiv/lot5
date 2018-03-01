@@ -3,34 +3,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <base href="/">
-    <title>Starter Node and Angular</title>
+
+    <title>Employee</title>
+
     <!-- CSS -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+    <link rel="stylesheet" href="build/css/demo.css">
+
     <!-- JS -->
     <script src="libs/angular/angular.min.js"></script>
-    <script src="libs/angular-route/angular-route.min.js"></script>
-    <!-- ANGULAR CUSTOM -->
-    <script src="js/controllers/MainCtrl.js"></script>
-    <script src="js/controllers/CatCtrl.js"></script>
-    <script src="js/services/MainService.js"></script>
-    <script src="js/appRoutes.js"></script>
-    <script src="js/app.js"></script>
-</head>
-<body ng-app="meanApp">
-<div class="container">
-    <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Stencil: Node and Angular</a>
-        </div>
 
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/controllers/employeeCtrl.js"></script>
+    <script src="js/services/EmployeeService.js"></script>
+    <script src="js/app.js"></script>
+
+    <!--Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Materialize JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</head>
+<body ng-app="sampleApp">
+<div class="container">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="/">Create Employee</a>
 
     </nav>
+    <div class="jumbotron text-center">
 
-    <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
+        <div class="row">
+            <form class="col s12" action="/users" method="post" target="_blank" id="form">
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input name="f_name" id="icon_prefixf" type="text" class="validate" ng-model="users.f_name" ng-minlength="3"
+                               ng-maxlength="15" required title="Please enter 3 characters or more.">
+                        <label for="icon_prefixf">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input name="l_name" id="icon_prefixf1" type="text" class="validate" ng-model="users.l_name" ng-minlength="3"
+                               ng-maxlength="15" required title="Please enter 3 characters or more.">
+                        <label for="icon_prefixf1">Last Name</label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s4 tel">
+                        <i class="material-icons prefix">phone</i>
+                        <input name="phone" id="phone" type="tel" class="validate" ng-model="users.phone" ng-minlength="3"
+                               ng-maxlength="15" required title="Please enter 3 characters or more.">
+                        <!--<label for="icon_prefixf">Phone</label>-->
+                    </div>
+                    <div class="input-field col s4">
+                        <i class="material-icons prefix">attach_money</i>
+                        <input name="salary" id="icon_prefixf3" type="text" class="validate" ng-model="users.salary" ng-minlength="3"
+                               ng-maxlength="15" required title="Please enter 3 characters or more.">
+                        <label for="icon_prefixf1">Salary</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <i class="material-icons prefix">email</i>
+                        <input name="email" id="email" type="email" class="validate" ng-model="users.email" title="Please enter a valid email"
+                               required>
+                        <label for="email" data-error="wrong" data-success="right">Email Address</label>
+                    </div>
+                </div>
+
+                <button class="waves-effect waves-light btn">Submit</button>
+
+            </form>
+        </div>
+
+    </div>
+
 </div>
+
+<!-- Load jQuery from CDN so can run demo immediately -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="build/js/intlTelInput.js"></script>
+<script>
+    $("#phone").intlTelInput({
+        // allowDropdown: false,
+        // autoHideDialCode: false,
+        // autoPlaceholder: "off",
+        // dropdownContainer: "body",
+        // excludeCountries: ["us"],
+        // formatOnDisplay: false,
+        // geoIpLookup: function(callback) {
+        //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+        //     var countryCode = (resp && resp.country) ? resp.country : "";
+        //     callback(countryCode);
+        //   });
+        // },
+        // hiddenInput: "full_number",
+        // initialCountry: "auto",
+        // nationalMode: false,
+        // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+        // placeholderNumberType: "MOBILE",
+        // preferredCountries: ['cn', 'jp'],
+        // separateDialCode: true,
+        utilsScript: "build/js/utils.js"
+    });
+</script>
 </body>
 </html>

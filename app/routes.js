@@ -1,19 +1,21 @@
-// app/routes.js
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }));
 
-// grab the nerd model we just created
+var User = require('./models/User');
 
-var Category = require('./models/category');
-var Answers = require('./models/answer');
 module.exports = function(app) {
 
-    // server routes ===========================================================
-    // handle things like api calls
-    // authentication routes
 
-    // sample api route
-    app.get('/api/category', function(req, res) {
+    app.use( function( req, res, next ) {
 
-        Answers.find(function(err, data) {
+        next();
+    });
+
+    app.get('/users', function (req, res) {
+        // use mongoose to get all nerds in the database
+        User.find(function (err, data) {
 
             // if there is an error retrieving, send the error.
             // nothing after res.send(err) will execute
@@ -22,36 +24,23 @@ module.exports = function(app) {
 
             res.json(data); // return all nerds in JSON format
         });
-
     });
-    app.get('/api/category/{{id}}', function(req, res) {
-//get info for specific {{id}}
 
-    });
-    app.post('/api/category', function(req, res) {
+    app.post('/users', function (req, res) {
+        var user = new User(req.body);      // create a new instance of the Nerd model
+              // set the nerds name (comes from the request)
+        console.log(req.body);
 
-    //get infor from request and store in to db
+        // save the nerd and check for errors
+        user.save(function(err) {
+            if (err)
+                res.send(err);
 
-    });
-    app.put('/api/category/{{id}}', function(req, res) {
+            res.json({ message: 'Employee created!' });
 
-       //upate info from request in post for data with {{id}}
-
-    });
-    app.delete('/api/category/{{id}}', function(req, res) {
-
-        //delete info for {{id}}
-
+        });
     });
 
 
-    // route to handle creating goes here (app.post)
-    // route to handle delete goes here (app.delete)
-
-    // frontend routes =========================================================
-    // route to handle all angular requests
-    app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load our public/index.html file
-    });
 
 };
