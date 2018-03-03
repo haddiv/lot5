@@ -1,24 +1,24 @@
-angular.module('teacherCtrl', []).controller('teacherController', function($scope) {
-    $scope.title = "Teacher List";
+angular.module('studentCtrl', []).controller('studentController', function($scope) {
+    $scope.title = "Students List";
     $scope.description = "test Description";
     $scope.list = [];
 
 
     $scope.list = [
         {
-            firstname : "Poxos",
+            firstname : "Hayk",
             lastname: "Poxosyan",
             email: "john@example.com",
             phone: "0000000"
     },
         {
-            firstname : "Petros",
+            firstname : "Karo",
             lastname: "Petosyan",
             email: "jeck@example.com",
             phone: "0000011"
         },
         {
-            firstname : "Pilipos",
+            firstname : "Ann",
             lastname: "Piliposyan",
             email: "pilos@example.com",
             phone: "0000022"
