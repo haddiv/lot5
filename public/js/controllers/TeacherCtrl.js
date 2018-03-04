@@ -1,4 +1,4 @@
-angular.module('TeacherCtrl', []).controller('StudentController', function($scope) {
+angular.module('TeacherCtrl', []).controller('TeacherController', function($scope) {
     $scope.title = "Teacher List ";
     $scope.description = "test Description for student";
     $scope.list = [];
