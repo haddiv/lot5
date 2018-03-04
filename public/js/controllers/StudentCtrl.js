@@ -7,12 +7,12 @@ angular.module('StudentCtrl', []).controller('StudentController', function($scop
         {
             FirstName:"Poxos",
             LastName:"Student",
-            Email:"Poxosyan@gmail.com",
+            Email:"Poxosyan@gmail.com"
         },
         {
             FirstName:"Petros",
             LastName:"Student",
-            Email:"petrosyan@gmail.com",
+            Email:"petrosyan@gmail.com"
         }
     ];
 });

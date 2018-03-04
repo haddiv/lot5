@@ -14,9 +14,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
     }).when('/student', {
         templateUrl: 'views/student/list.html',
         controller: 'StudentController'
-    }),
-
-
+    }).when('/teacher', {
+        templateUrl: 'views/teacher/list.html',
+        controller: 'StudentController'
+    });
     $locationProvider.html5Mode(true);
 
 }]);

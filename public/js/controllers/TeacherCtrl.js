@@ -1,5 +1,5 @@
-angular.module('EmployeeCtrl', []).controller('EmployeeController', function($scope) {
-    $scope.title = "Employee List 2";
+angular.module('TeacherCtrl', []).controller('TeacherController', function($scope) {
+    $scope.title = "Teacher List ";
     $scope.description = "test Description";
     $scope.list = [];
 
