@@ -5,8 +5,20 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/', {
             templateUrl: 'views/home.html',
             controller: 'MainController'
-        })
-
+        }).when('/employee', {
+                   templateUrl: 'views/employee/list.html',
+                    controller: 'EmployeeController'
+            }).when('/employe/create', {
+                templateUrl: 'views/employe/create.html',
+                    controller: 'EmployeController'
+            }).when('/student', {
+                   templateUrl: 'views/student/list.html',
+                   controller: 'StudentController'
+               .when('/teacher', {
+                   templateUrl: 'views/teacher/list.html',
+                   controller: 'TeacherController'
+                       })
+            }),
 
     $locationProvider.html5Mode(true);
 
