@@ -2,14 +2,23 @@
 
 // grab the nerd model we just created
 
-var Category = require('./models/category');
-var Answers = require('./models/answer');
+
+var employee_model = require('./models/employee');
 module.exports = function(app) {
 
     // server routes ===========================================================
     // handle things like api calls
     // authentication routes
+    app.get('/api/employee', function(req, res) {
 
+        employee_model.find(function(err, data) {
+                       if (err)
+                               res.send(err);
+            console.log(data);
+                           res.json(data); // return all nerds in JSON format
+                });
+
+    });
 
 
 
