@@ -8,11 +8,13 @@ angular.module('TeacherCtrl', []).controller('TeacherController', function($scop
             FirstName:"Poxos",
             LastName:"Student",
             Email:"Poxosyan@gmail.com",
+            salary: "30000",
         },
         {
             FirstName:"Petros",
             LastName:"Student",
             Email:"petrosyan@gmail.com",
+            salary: "40000",
         }
     ];
 });

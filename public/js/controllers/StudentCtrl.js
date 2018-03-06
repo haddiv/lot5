@@ -5,14 +5,17 @@ angular.module('StudentCtrl', []).controller('StudentController', function($scop
 
     $scope.list = [
         {
-            FirstName:"Poxos",
-            LastName:"Student",
-            Email:"Poxosyan@gmail.com",
+            FirstName:"Ani",
+            LastName:"Amiryan",
+            Email:"Amiryan@gmail.com",
+            phone:"123123"
         },
+
         {
-            FirstName:"Petros",
-            LastName:"Student",
-            Email:"petrosyan@gmail.com"
-        }
+            FirstName:"Karine",
+            LastName:"Karapetyan",
+            Email:"Karapetyan@gmail.com",
+            phone:"456456"
+        },
     ];
 });

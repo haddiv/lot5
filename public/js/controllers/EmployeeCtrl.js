@@ -9,7 +9,7 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
     }).then(function successCallback(response) {
         console.log(response);
         $scope.list = response.data;
-
+console.log(data);
     }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
