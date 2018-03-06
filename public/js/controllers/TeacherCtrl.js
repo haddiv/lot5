@@ -1,23 +1,17 @@
-angular.module('TeacherCtrl', []).controller('TeacherController', function($scope) {
+angular.module('TeacherCtrl', []).controller('TeacherController', function($scope,$http) {
     $scope.title = "Teacher List ";
     $scope.description = "test Description";
     $scope.list = [];
 
-    $scope.list = [
-        {
-            FirstName:"Poxos",
-            LastName:"Poxosyan",
-            Email:"Poxosyan@gmail.com",
-        },
-        {
-            FirstName:"Petros",
-            LastName:"Petrosyan",
-            Email:"petrosyan@gmail.com",
-        },
-        {
-            FirstName:"Petros",
-            LastName:"Petrosyan",
-            Email:"petrosyan@gmail.com",
-        }
-    ];
+    $http({
+        method: 'GET',
+        url: '/api/employee'
+    }).then(function successCallback(response) {
+        console.log(response);
+        $scope.list = response.data;
+
+    }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
 });
