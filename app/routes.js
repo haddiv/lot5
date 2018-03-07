@@ -1,9 +1,10 @@
 // app/routes.js
 
 // grab the nerd model we just created
-
+/*
 var Category = require('./models/category');
-var Answers = require('./models/answer');
+var Answers = require('./models/answer');*/
+var person_model = require('./models/person');
 module.exports = function(app) {
 
     // server routes ===========================================================
@@ -11,20 +12,20 @@ module.exports = function(app) {
     // authentication routes
 
     // sample api route
-    app.get('/api/category', function(req, res) {
+    app.get('/api/person', function(req, res) {
 
-        Answers.find(function(err, data) {
+        person_model.find(function(err, data) {
 
             // if there is an error retrieving, send the error.
             // nothing after res.send(err) will execute
             if (err)
-                res.send(err);
-
+                   res.send(err);
+            /*console.log(data);*/
             res.json(data); // return all nerds in JSON format
         });
 
     });
-    app.get('/api/category/{{id}}', function(req, res) {
+/*    app.get('/api/category/{{id}}', function(req, res) {
 //get info for specific {{id}}
 
     });
@@ -42,7 +43,7 @@ module.exports = function(app) {
 
         //delete info for {{id}}
 
-    });
+    });*/
 
 
     // route to handle creating goes here (app.post)
