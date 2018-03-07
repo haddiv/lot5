@@ -20,13 +20,12 @@ module.exports = function(app) {
 
     });
 
+    app.post('/api/employee', function(req, res) {
+        var myData = new employee_model(req.body);
+        myData.save();
+        res.send("item saved to database");
+    });
 
-
-    // route to handle creating goes here (app.post)
-    // route to handle delete goes here (app.delete)
-
-    // frontend routes =========================================================
-    // route to handle all angular requests
     app.get('*', function(req, res) {
         res.sendfile('./public/index.html'); // load our public/index.html file
     });

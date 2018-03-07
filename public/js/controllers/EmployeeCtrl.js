@@ -2,7 +2,11 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
     $scope.title = "Employee List 2";
     $scope.description = "test Description";
     $scope.list = [];
-
+    $scope.model = {
+        FirstName:"",
+        LastName:"",
+        Email:""
+    };
     $http({
         method: 'GET',
         url: '/api/employee'
@@ -14,5 +18,14 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
+
+    $scope.submit = function() {
+        $http.post('/api/employee',$scope.model).
+        then(function(response) {
+            console.log("posted successfully");
+        }).catch(function(response) {
+            console.error("error in posting");
+        })
+    };
 
 });
