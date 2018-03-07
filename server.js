@@ -14,6 +14,7 @@ var db = require('./config/db');
 
 // set our port
 var port = process.env.PORT || 8080;
+
 mongoose.connect(db.url);
 // connect to our mongoDB database
 // (uncomment after you enter in your own credentials in config/db.js)
@@ -47,3 +48,4 @@ console.log('Magic happens on port ' + port);
 
 // expose app
 exports = module.exports = app;
+
