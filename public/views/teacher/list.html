@@ -10,6 +10,15 @@
             <th>Phone</th>
         </tr>
         </thead>
+        <div class="fomritems">
+            <form ng-submit="submit()">
+                <input type="text" name="FirstName" ng-model="model.FirstName"/>
+                <input type="text" name="LastName" ng-model="model.LastName"/>
+                <input type="text" name="Email" ng-model="model.Email"/>
+                <input type="text" name="Phone" ng-model="model.Phone"/>
+                <input type="submit" name="submit" value="Save"/>
+            </form>
+        </div>
         <tbody>
         <tr ng-repeat="x in list">
             <td>{{ x.firstname }}</td>
