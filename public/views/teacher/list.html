@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in list">
+            <td>{{ x.FirstName }}</td>
+            <td>{{ x.LastName }}</td>
+            <td>{{ x.Email }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
