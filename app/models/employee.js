@@ -7,6 +7,6 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('employees', {
     FirstName : {type : String, default: 'test'},
     LastName : {type : String, default: 'test'},
-   Email : {type : String, default: 'test'},
+    age: {type : String, default: 'test'}
 
 });
