@@ -77,6 +77,10 @@ angular.module('HomeCtrl', []).controller('HomeController', function($scope,$htt
     $scope.toggle = function () {
         $scope.create = !$scope.create;
     };
+    $scope.delete = false;
+    $scope.toggle_del = function () {
+        $scope.delete = !$scope.delete;
+    };
 
     $scope.clear_message = function () {
         $scope.message = "";

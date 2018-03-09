@@ -16,14 +16,18 @@
 
     </div>
 
-
-
-
-
-    <div >
-        <button type="button" class="btn btn-default"  ng-click="delete_model(clicked_person)">Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+    <div class="alert alert-danger alert-dismissible" ng-show="delete">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" >&times;</a>
+        <strong>Are you shure???</strong>
+        <div >
+            <button type="button" class="btn btn-default"  ng-click="delete_model(clicked_person)">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
     </div>
+
+
+
+
 
 
 
@@ -92,7 +96,7 @@
                     <span class="glyphicon glyphicon-pencil"></span> </button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger btn-sm"  ng-click="select_person(person)">
+                <button type="button" class="btn btn-danger btn-sm"  ng-click="select_person(person);toggle_del()" >
                     <span class="glyphicon glyphicon-remove-circle"></span>
                 </button>
             </td>
