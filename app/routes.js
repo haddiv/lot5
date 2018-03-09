@@ -25,6 +25,32 @@ module.exports = function(app) {
         });
 
     });
+
+    app.post('/api/employee', function(req, res) {
+        var myData = new person_model(req.body);
+        myData.save();
+        res.send("item saved to database");
+    });
+
+
+    app.delete('/api/person/:lists_id', function(req, res) {
+        /*person_model.find(function(err, data){*/
+            person_model.findByIdAndRemove({
+                _id : req.params.lists_id
+            }, function(err, todo){
+                if(err){
+                    res.send(err);
+                }
+                res.send(todo);
+
+                });
+          /*  })*/
+       /* })*/
+        /*res.send(myData);*/
+    });
+
+
+
 /*    app.get('/api/category/{{id}}', function(req, res) {
 //get info for specific {{id}}
 

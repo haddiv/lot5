@@ -3,11 +3,8 @@
   "main": "server.js",
   "dependencies": {
     "express": "~4.5.1",
-<<<<<<< HEAD
     "mongoose": ">=4.11.0",
-=======
     "mongoose": "~3.8.0",
->>>>>>> a1931d60814dfd10a70831438d87a03612c357b2
     "body-parser": "~1.4.2",
     "method-override": "~2.0.2"
   }

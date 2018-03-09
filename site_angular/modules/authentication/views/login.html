@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col-xs-offset-4 col-xs-4" style="background: cornflowerblue">
+        <h2>Authentication</h2>
+        <form id="authentication" ng-submit="login()">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" placeholder="You@example.com"
+                       name="email" ng-model="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your name password"
+                       name="password" ng-model="password" required>
+            </div>
+            <button type="submit" name="submit" class="btn btn-default">Send</button>
+        </form>
+    </div>
+</div>
