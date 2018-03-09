@@ -12,6 +12,16 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
         phone: ""
     };
 
+    $scope.clearModel = function () {
+
+        for(var i in $scope.model){
+
+            $scope.model[i] = '';
+
+        }
+
+    };
+
     EmployeeSer.get().then(function (data) {
 
         $scope.list = data;
@@ -32,6 +42,7 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
     $scope.deleteModelInList = function(ind){
 
         EmployeeSer.delete($scope.list[ind]._id);
+
         $scope.list.splice(ind, 1);
 
     };
@@ -39,18 +50,34 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
     $scope.showRegDiv = function () {
 
         $scope.regDiv = true;
+        $scope.viewDiv = false;
 
+        $scope.clearModel();
     };
 
     $scope.hideRegDiv = function () {
 
         $scope.regDiv = false;
 
+    };
+
+    $scope.showViewDiv = function (ind) {
+
+        $scope.hideRegDiv();
+
+        $scope.viewDiv = true;
+
         for(var i in $scope.model){
 
-            $scope.model[i] = '';
+            $scope.model[i] = $scope.list[ind][i];
 
         }
+
+    };
+
+    $scope.closeViewDiv = function () {
+
+        $scope.viewDiv = false;
 
     };
 

@@ -17,3 +17,20 @@ input.ng-invalid {
 input.ng-valid {
     background-color: lightgreen;
 }
+
+.viewDiv{
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px gray;
+    padding: 15px;
+    position: absolute;
+    background-color: #2aabd2;
+    top: 100px;
+    left: 28%;
+}
+.viewDiv li{
+    list-style-type: none;
+    color: #b92c28;
+    font-size: 25px;
+}
