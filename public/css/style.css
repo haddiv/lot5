@@ -1,0 +1,19 @@
+.popupDiv{
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 5px 30px 30px 30px;
+    position: absolute;
+    top: 5px;
+    left: 25%;
+    background-color: #51BCD8;
+    box-shadow: 5px 5px 5px grey;
+}
+
+input.ng-invalid {
+    background-color: pink;
+}
+
+input.ng-valid {
+    background-color: lightgreen;
+}

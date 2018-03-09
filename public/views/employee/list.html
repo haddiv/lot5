@@ -1,31 +1,78 @@
-<div class="container">
-    <h2>{{title}}</h2>
-    <p>{{description}}</p>
-    <div>
-        <button class="btn btn-primary">Create</button>
+
+    <div class="container" style="background-color: #EFEFEF; width: 100%;">
+
+        <h2>{{title}} <button type="button" class="btn btn-info btn-lg" ng-click="showRegDiv()">Create new employee</button></h2>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Salary</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr ng-repeat="x in list">
+
+                    <td>{{x.firstname}}</td>
+                    <td>{{x.lastname}}</td>
+                    <td>{{x.email}}</td>
+                    <td>{{x.salary | currency:'AMD '}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm">View</button>
+                        <button type="button" class="btn btn-primary btn-sm">Update</button>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="deleteModelInList($index)">Delete</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
     </div>
-    <div class="fomritems">
-        <form ng-submit="submit()">
-            <input type="text" name="FirstName" ng-model="model.FirstName"/>
-            <input type="text" name="LastName" ng-model="model.LastName"/>
-            <input type="text" name="Email" ng-model="model.Email"/>
-            <input type="submit" name="submit" value="Save"/>
+
+    <div class="popupDiv" ng-show="regDiv">
+
+        <h3>Create new employee</h3>
+
+        <form name="regForm" ng-submit="submit()">
+
+            <label for="first-name">Firstname</label>
+            <input type="text" id="first-name" class="form-control" placeholder="Enter name" name="firstname" required ng-model="model.firstname"><br>
+            <span style="color:red" ng-show="isReqFname && !regFirstname"><b>Firstname is required.</b></span><br>
+
+            <label for="last-name">Lastname</label>
+            <input type="text" id="last-name" class="form-control" placeholder="Enter surname" name="lastname" required ng-model="model.lastname"><br>
+            <span style="color:red" ng-show="isReqLname && !regLastname"><b>Lastname is required.</b></span><br>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter email" name="email" required ng-model="model.email"><br>
+            <span style="color:red" ng-show="isReqEmail && !regEmail"><b>Email incorrect or empty.</b></span><br>
+
+            <label for="salary">Salary (AMD)</label>
+            <input type="number" id="salary" class="form-control" placeholder="Enter salary" name="salary" required ng-model="model.salary"><br>
+            <span style="color:red" ng-show="isReqSalary && !regSalary"><b>Salary is required.</b></span><br>
+
+            <label for="phone">Phone (0xxxxxxxx)</label>
+            <input type="tel" id="phone" pattern="0[0-9]{8}" class="form-control" placeholder="Enter phone number" name="phone" required ng-model="model.phone"><br>
+            <span style="color:red" ng-show="isReqPhone && !regPhone"><b>Phone incorrect or empty.</b></span><br>
+
+            <div style="margin: 15px 0 0 62%">
+
+                <input type="submit" class="btn btn-primary btn-md" name="submit" value="Save"/>
+                <button type="button" class="btn btn-primary btn-md" ng-click="hideRegDiv()">Close</button>
+
+            </div>
+
         </form>
+
     </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="x in list">
-            <td>{{ x.FirstName }}</td>
-            <td>{{ x.LastName }}</td>
-            <td>{{ x.Email }}</td>
-        </tr>
-        </tbody>
-    </table>
-</div>

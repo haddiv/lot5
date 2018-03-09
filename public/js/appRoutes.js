@@ -18,6 +18,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         templateUrl: 'views/teacher/list.html',
         controller: 'StudentController'
     });
+
+
     $locationProvider.html5Mode(true);
 
 }]);

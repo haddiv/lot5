@@ -1,31 +1,57 @@
-angular.module('EmployeeCtrl', []).controller('EmployeeController', function($scope, $http,$interval) {
-    $scope.title = "Employee List 2";
-    $scope.description = "test Description";
-    $scope.list = [];
-    $scope.model = {
-        FirstName:"",
-        LastName:"",
-        Email:""
-    };
-    $http({
-        method: 'GET',
-        url: '/api/employee'
-    }).then(function successCallback(response) {
-        console.log(response);
-        $scope.list = response.data;
+angular.module('EmployeeCtrl', []).controller('EmployeeController', function($scope, $http, $timeout, EmployeeSer) {
 
-    }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
+    $scope.title = "Employee List";
+
+    $scope.list = [];
+
+    $scope.model = {
+        firstname:"",
+        lastname:"",
+        email:"",
+        salary: "",
+        phone: ""
+    };
+
+    EmployeeSer.get().then(function (data) {
+
+        $scope.list = data;
+
     });
 
     $scope.submit = function() {
-        $http.post('/api/employee',$scope.model).
-        then(function(response) {
-            console.log("posted successfully");
-        }).catch(function(response) {
-            console.error("error in posting");
-        })
+
+        EmployeeSer.create($scope.model).then(function (data) {
+
+            $scope.list.push(data);
+            $scope.hideRegDiv();
+
+        });
+
+    };
+
+    $scope.deleteModelInList = function(ind){
+
+        EmployeeSer.delete($scope.list[ind]._id);
+        $scope.list.splice(ind, 1);
+
+    };
+
+    $scope.showRegDiv = function () {
+
+        $scope.regDiv = true;
+
+    };
+
+    $scope.hideRegDiv = function () {
+
+        $scope.regDiv = false;
+
+        for(var i in $scope.model){
+
+            $scope.model[i] = '';
+
+        }
+
     };
 
 });
