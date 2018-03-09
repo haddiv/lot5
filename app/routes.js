@@ -32,6 +32,16 @@ module.exports = function(app) {
 
     });
 
+    app.put('/api/employee', function(req, res) {
+
+        employee_model.update({ _id: ObjectId(req.body._id)}, { $set: req.body}, function(err, data) {
+            if (err)
+                res.send(err);
+            res.send('updated');
+        });
+
+    });
+
     app.get('*', function(req, res) {
         res.sendfile('./public/index.html');
     });

@@ -33,6 +33,17 @@
 
             });
 
-    }
+        },
+
+        put : function(updateData) {
+            return    $http.put('/api/employee',updateData).then(function(response) {
+
+            }, function(response) {
+
+                console.error("error in update");
+
+            });
+
+        }
 
 }}]);

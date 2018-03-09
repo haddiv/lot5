@@ -1,6 +1,7 @@
-angular.module('EmployeeCtrl', []).controller('EmployeeController', function($scope, $http, $timeout, EmployeeSer) {
+angular.module('EmployeeCtrl', []).controller('EmployeeController', function($scope, EmployeeSer) {
 
-    $scope.title = "Employee List";
+    $scope.title = "Employee";
+    $scope.showButton = true;
 
     $scope.list = [];
 
@@ -69,7 +70,15 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
 
         for(var i in $scope.model){
 
-            $scope.model[i] = $scope.list[ind][i];
+            if(i === 'salary'){
+
+                $scope.model[i] = + $scope.list[ind][i];
+
+            }else {
+
+                $scope.model[i] = $scope.list[ind][i];
+
+            }
 
         }
 
@@ -80,5 +89,42 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
         $scope.viewDiv = false;
 
     };
+
+    $scope.showUpdateDiv = function (ind) {
+
+        for(var i in $scope.model){
+
+            if(i === 'salary'){
+
+                $scope.model[i] = + $scope.list[ind][i];
+
+            }else {
+
+                $scope.model[i] = $scope.list[ind][i];
+
+            }
+
+        }
+
+      $scope.updateDiv = true;
+      $scope.showButton = false;
+      $scope.updateIndex = ind;
+
+    };
+
+    $scope.update = function (ind) {
+
+        for(var i in $scope.model){
+
+            $scope.list[ind][i] = $scope.model[i];
+
+        }
+
+        EmployeeSer.put($scope.list[ind])
+
+        $scope.updateDiv = false;
+        $scope.showButton = true;
+
+    }
 
 });
