@@ -1,4 +1,4 @@
-angular.module('teacherCtrl', []).controller('teacherController', function($scope, $http,$interval) {
+angular.module('teacherCtrl', []).controller('teacherController', function($scope, $http) {
     $scope.title = "Teacher List";
     $scope.description = "test Description";
     $scope.list = [];
@@ -12,23 +12,26 @@ angular.module('teacherCtrl', []).controller('teacherController', function($scop
 
     $http({
         method: 'GET',
-        url: '/api/teacher'
+        url: '/api/teacher/create'
     }).then(function successCallback(response) {
 
         console.log(response);
         $scope.list = response.data ;
-        // this callback will be called asynchronously
-        // when the response is available
     }, function errorCallback(response) {
     });
 
 
     $scope.submit = function() {
-        $http.post('/api/teacher',$scope.model)
-            .then(function(response) {
+        $http.post('/api/teacher/create',$scope.model)
+        .then(function(response) {
             console.log("posted successfully");
         }).catch(function(response) {
             console.error("error in posting");
         })
     };
+
+
+
+    $scope.something = "teacher/create";
+
 });

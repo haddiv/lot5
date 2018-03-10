@@ -25,13 +25,25 @@ module.exports = function(app) {
     });
 
 
-
-
-    app.post('/api/employee', function(req, res) {
+    app.post('/api/teacher', function(req, res) {
         var myData = new teacher_model(req.body);
         myData.save();
         res.send("item saved to database");
     });
+
+
+    /*app.get('/api/teacher/create', function(req, res) {
+
+        teacher_model.find(function(err, data) {
+            if (err)
+                res.send(err);
+            console.log(data);
+            res.json(data); // return all nerds in JSON format
+        });
+    });*/
+
+
+
 
 
     app.put('/api/category/{{id}}', function(req, res) {
