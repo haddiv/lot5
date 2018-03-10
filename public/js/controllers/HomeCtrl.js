@@ -26,6 +26,7 @@ angular.module('HomeCtrl', []).controller('HomeController', function($scope,$htt
             $scope.persons.push(response.data);
 
             $scope.message = "New employee added successfully";
+            /*response.data = {};*/
         }).catch(function(response) {
             console.error("error in posting");
         })
@@ -34,7 +35,7 @@ angular.module('HomeCtrl', []).controller('HomeController', function($scope,$htt
     $scope.delete_model = function (id) {
         $http.delete('/api/person/'+ id._id)
             .then(function(data) {
-
+                $scope.persons.splice($scope.persons.indexOf($scope.data, 1));
                 console.log(data);
             }).catch(function(response) {
             console.error("error in posting");

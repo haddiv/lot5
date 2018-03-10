@@ -29,18 +29,19 @@ module.exports = function(app) {
     app.post('/api/employee', function(req, res) {
         var myData = new person_model(req.body);
         myData.save();
-        res.send("item saved to database");
+        res.send(myData);
     });
 
 
     app.delete('/api/person/:lists_id', function(req, res) {
-        /*person_model.find(function(err, data){*/
-            person_model.findByIdAndRemove({
+       /* person_model.find({_id : req.params.lists_id},function(err, data){*/
+            person_model.remove({
                 _id : req.params.lists_id
             }, function(err, todo){
                 if(err){
                     res.send(err);
                 }
+                console.log( typeof (req.params.lists_id));
                 res.send(todo);
 
                 });
