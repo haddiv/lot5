@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <div>
+        <button class="btn btn-primary" ng-init="clickedh=false" ng-click="clickedh=!clickedh">Create</button>
+    </div>
+    <div ng-show="clickedh">
+        <form ng-submit="submit()">
+            <label>FirstName:</label>
+            <input type="text" name="FirstName" ng-model="model.FirstName"/>
+            <label>LastName:</label>
+            <input type="text" name="LastName" ng-model="model.LastName"/>
+            <label>Email:</label>
+            <input type="text" name="Email" ng-model="model.Email"/>
+            <input type="submit" name="submit" value="Save"/>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in list">
+            <td>{{ x.FirstName }}</td>
+            <td>{{ x.LastName }}</td>
+            <td>{{ x.Email }}</td>
+            <td>
+                <a href="#/employee{{employee._id}}/show" class="btn btn-info"> Show </a>
+                <a href="/employee{{employee._id}}/edit" class="btn btn-success"><span
+                        class="glyphicon glyphicon-edit"> </span> Edit </a>
+                <a ng-click="deleteEmployee(employee._id)" class="btn btn-danger"><span
+                        class="glyphicon glyphicon-trash"> </span> Delete </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -13,8 +13,12 @@
     <script src="libs/angular-route/angular-route.min.js"></script>
     <!-- ANGULAR CUSTOM -->
     <script src="js/controllers/MainCtrl.js"></script>
+    <script src="js/controllers/EmployeeCtrl.js"></script>
+    <script src="js/controllers/StudentCtrl.js"></script>
+    <script src="js/controllers/TeacherCtrl.js"></script>
     <script src="js/controllers/CatCtrl.js"></script>
     <script src="js/services/MainService.js"></script>
+    <script src="js/services/EmployeeService.js"></script>
     <script src="js/appRoutes.js"></script>
     <script src="js/app.js"></script>
 </head>
@@ -31,6 +35,16 @@
 
     <!-- ANGULAR DYNAMIC CONTENT -->
     <div ng-view></div>
+
+    <div>
+        <a href="/student" class="btn btn-info" class="btn">Student List</a>
+    </div>
+    <div>
+        <a href="/employee" class="btn btn-info" class="btn">Employee List</a>
+    </div>
+    <div>
+        <a href="/teacher" class="btn btn-info" class="btn">Teacher List</a>
+    </div>
 </div>
 </body>
 </html>
