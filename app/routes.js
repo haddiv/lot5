@@ -19,36 +19,23 @@ module.exports = function(app) {
         teacher_model.find(function(err, data) {
             if (err)
                 res.send(err);
+            // console.log("get element is working");
             console.log(data);
             res.json(data); // return all nerds in JSON format
         });
     });
 
 
-    app.post('/api/teacher', function(req, res) {
+    app.post('/api/teacher/create', function(req, res) {
         var myData = new teacher_model(req.body);
         myData.save();
         res.send("item saved to database");
     });
 
 
-    /*app.get('/api/teacher/create', function(req, res) {
-
-        teacher_model.find(function(err, data) {
-            if (err)
-                res.send(err);
-            console.log(data);
-            res.json(data); // return all nerds in JSON format
-        });
-    });*/
-
-
-
-
-
     app.put('/api/category/{{id}}', function(req, res) {
 
-       //upate info from request in post for data with {{id}}
+        //upate info from request in post for data with {{id}}
 
     });
     app.delete('/api/category/{{id}}', function(req, res) {

@@ -1,32 +1,34 @@
 
-<div class="jumbotron">
-    <div class="row">
-        <form>
-            <div class="form-group">
-                <label for="category">Chose category:</label>
-                <select>
-                    <option id="category" ng-model="category" ng-repeat="x in cat_list">{{x.name}}</option>
-                    <!--<option id="category" ng-model="category" ng-repeat="x in cat_list">{{x.name}}</option>-->
-                </select>
+<div class="jumbotron" class="container">
+    <!--    <div class="row">
+            <form>
+                <div class="form-group">
+                    <label for="category">Chose category:</label>
+                    <select>
+                        <option id="category" ng-model="category" ng-repeat="x in cat_list">{{x.name}}</option>
+                        &lt;!&ndash;<option id="category" ng-model="category" ng-repeat="x in cat_list">{{x.name}}</option>&ndash;&gt;
+                    </select>
 
-            </div>
-            <div class="form-group">
-                <form ng-submit="submit()">
-                <h3 align="center">Registration form for Teachers</h3>
-                First Name: <br> <input type="text" name="firstName" ng-model="$scope.firstname"> <br>
-                Last Name: <br>  <input type="text" name="lastName" ng-model="$scope.lastname"> <br>
-                Email: <br>    <input type="email" name="country" ng-model="$scope.email"> <br>
-                Phone: <br>       <input type="number" name="city" ng-model="$scope.phone"> <br>
-                Solary: <br><input type="text" name="solary" ng-model="$scope.solary"> <br>
-                Students:<br><input type="text" name="students" ng-model="$scope.students"> <br>
-                Working Country:<br><input type="text" name="workingCountri" ng-model="$scope.workingCountri"> <br>
-                Skills:<br><input type="text" name="skills" ng-model="$scope.skills"> <br>
-                <!--<input id="sendTeacher"  type="submit" value="Send">-->
-                <input type="submit" name="submit" value="Save"/>
-                </form>
-            </div>
+                </div>
+
+            </form>
+
+        </div>-->
+    <div class="form-group">
+        <form ng-submit="submit()">
+            <h3 align="center">Registration form for Teachers</h3>
+
+            First Name: <input type="text" name="FirstName" ng-model="model.FirstName"> <br>
+            Last Name: <input type="text" name="LastName" ng-model="model.LastName"> <br>
+            Email:  <input type="email" name="Email" ng-model="model.Email"> <br>
+            Phone:   <input type="number" name="Phone" ng-model="model.Phone"> <br>
+            Solary: <br><input type="text" name="Solary" ng-model="$scope.solary"> <br>
+            Students:<br><input type="text" name="Students" ng-model="$scope.students"> <br>
+            Working Country:<br><input type="text" name="workingCountri" ng-model="$scope.workingCountri"> <br>
+            Skills:<br><input type="text" name="Skills" ng-model="$scope.skills"> <br>
+            <!--<input id="sendTeacher"  type="submit" value="Send">-->
+            <input type="submit" name="submit" value="Save"/>
+
         </form>
-
-
     </div>
 </div>

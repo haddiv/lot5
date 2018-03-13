@@ -12,10 +12,10 @@ angular.module('teacherCtrl', []).controller('teacherController', function($scop
 
     $http({
         method: 'GET',
-        url: '/api/teacher/create'
+        url: '/api/teacher'
     }).then(function successCallback(response) {
 
-        console.log(response);
+        // console.log(response);
         $scope.list = response.data ;
     }, function errorCallback(response) {
     });
@@ -23,15 +23,15 @@ angular.module('teacherCtrl', []).controller('teacherController', function($scop
 
     $scope.submit = function() {
         $http.post('/api/teacher/create',$scope.model)
-        .then(function(response) {
-            console.log("posted successfully");
-        }).catch(function(response) {
+            .then(function(response) {
+                console.log(response,"posted successfully");
+            }).catch(function(response) {
             console.error("error in posting");
         })
     };
 
 
-
-    $scope.something = "teacher/create";
+    var Create = "teacher/create"
+    $scope.something = Create;
 
 });
