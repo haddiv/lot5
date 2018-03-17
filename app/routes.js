@@ -26,36 +26,34 @@ module.exports = function(app) {
         myData.save();
         res.send("item saved to database");
     });
+    
+     app.delete('/api/employee/:id', function(req, res) {
+
+        employee_model.remove({ _id : ObjectId(req.params.id)}, function(err, data) {
+            if (err)
+                res.send(err);
+            res.send('deleted');
+        });
+
+    });
+
+    app.put('/api/employee', function(req, res) {
+
+        employee_model.update({ _id: ObjectId(req.body._id)}, { $set: req.body}, function(err, data) {
+            if (err)
+                res.send(err);
+            res.send('updated');
+        });
+
+    });
+    
 
     app.get('*', function(req, res) {
         res.sendfile('./public/index.html'); // load our public/index.html file
     });
 
 };
-app.put('/api/employee/{{id}}', function(req, res) {
-    db.get().collection('nameCollection').updateOne(
-        {_id: ObjectID(req.params.id)},
-        {name: req.body.name},
-        function (err, result) {
-            if (err) {
-                console.log(err);
-                return res.sendStatus(200);
-            }
-        });
-});
 
-app.delete('/api/employee/{{id}}', function(req, res) {
-    db.get().collection("employee").deleteOne(
-        {_id: ObjectID(req.params.id)},
-        function (err, result) {
-            if(err){
-                console.log(err);
-                return res.sendStatus(500);
-            }
-            res.sendStatus(200);
-        }
-    )
-});
-exports.get = function () {
-    return state.db;
-};
+//exports.get = function () {
+//    return state.db;
+//};

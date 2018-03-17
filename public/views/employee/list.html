@@ -1,15 +1,12 @@
 <div class="container">
     <h2>{{title}}</h2>
-    <p>{{description}}</p>
-    <div>
-        <button class="btn btn-primary">Create</button>
-    </div>
+   
     <div class="fomritems">
         <form ng-submit="submit()">
             <input type="text" name="FirstName" ng-model="model.FirstName"/>
             <input type="text" name="LastName" ng-model="model.LastName"/>
             <input type="text" name="Email" ng-model="model.Email"/>
-            <input type="submit" name="submit" value="Save"/>
+            <input type="submit" name="submit" value="Create"/>
         </form>
     </div>
     <table class="table">
@@ -22,9 +19,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="x in list">
-            <td>{{ x.FirstName }}</td>
-            <td>{{ x.LastName }}</td>
-            <td>{{ x.Email }}</td>
+         <td><input name="Firstname" ng-model="x.FirstName "  ng-disabled="!enabledEdit[{{$index}}]" /></td>
+         <td><input name="Lastname" ng-model=" x.LastName  "  ng-disabled="!enabledEdit[{{$index}}]" /></td>
+         <td><input name="Email" ng-model="x.Email"  ng-disabled="!enabledEdit[{{$index}}]" /></td>
+         
+            <td> <button class="btn btn-primary" ng-click="editEmployee($index)">Edit</button>
+             <button class="btn btn-danger" ng-click="deleteEmployee($index)">Delete</button></td>
         </tr>
         </tbody>
     </table>

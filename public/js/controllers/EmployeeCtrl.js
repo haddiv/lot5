@@ -27,5 +27,17 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
             console.error("error in posting");
         })
     };
+  $scope.enabledEdit =[];
 
-});
+   
+	
+		 $scope.enabledEdit[$scope.list.length-1]=true;
+	
+	$scope.editEmployee = function(index){
+		console.log("edit index"+index);
+		$scope.enabledEdit[index] = true;
+	}
+    
+     $scope.deleteEmployee = function(index) {
+		  $scope.list.splice(index,1);
+}});
