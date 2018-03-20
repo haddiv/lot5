@@ -1,20 +1,118 @@
-<div class="container">
-    <h2>{{title}}</h2>
-    <p>{{description}}</p>
+
+
+<div class="container" style="background-color: #EFEFEF; width: 100%;">
+
+    <h2>{{title}} list <button type="button" class="btn btn-info btn-lg" ng-click="showRegDiv()" ng-show="showButton">Create new {{title}}</button></h2>
+
     <table class="table">
+
         <thead>
+
         <tr>
+
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Email</th>
+            <th>Salary</th>
+
         </tr>
+
         </thead>
+
         <tbody>
+
         <tr ng-repeat="x in list">
-            <td>{{ x.FirstName }}</td>
-            <td>{{ x.LastName }}</td>
-            <td>{{ x.Email }}</td>
+
+            <td>{{x.firstname}}</td>
+            <td>{{x.lastname}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.salary | currency:'AMD '}}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" ng-show="showButton" ng-click="showViewDiv($index)">View</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-show="showButton" ng-click="showUpdateDiv($index)">Update</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-show="showButton" ng-click="deleteModelInList($index)">Delete</button>
+            </td>
+
         </tr>
+
         </tbody>
+
     </table>
+
+</div>
+
+<div class="popupDiv" ng-show="regDiv">
+
+    <h3>Create new {{title}}</h3>
+
+    <form name="regForm" ng-submit="submit()">
+
+        <label for="first-name">Firstname</label>
+        <input type="text" id="first-name" class="form-control" placeholder="Enter name" name="firstname" required ng-model="model.firstname"><br>
+
+        <label for="last-name">Lastname</label>
+        <input type="text" id="last-name" class="form-control" placeholder="Enter surname" name="lastname" required ng-model="model.lastname"><br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" placeholder="Enter email" name="email" required ng-model="model.email"><br>
+
+        <label for="salary">Salary (AMD)</label>
+        <input type="number" id="salary" class="form-control" placeholder="Enter salary" name="salary" required ng-model="model.salary"><br>
+
+        <label for="phone">Phone (0xxxxxxxx)</label>
+        <input type="tel" id="phone" pattern="0[0-9]{8}" class="form-control" placeholder="Enter phone number" name="phone" required ng-model="model.phone"><br>
+
+        <div style="margin: 15px 0 0 62%">
+
+            <input type="submit" style="margin-left: 40%;" class="btn btn-primary btn-md" name="submit" value="Save"/>
+            <button type="button" class="btn btn-primary btn-md" ng-click="hideRegDiv()">Close</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="viewDiv" ng-show="viewDiv">
+
+    <ul style="list-style-type:none">
+        <li>Name - {{model.firstname}}</li>
+        <li>Surname - {{model.lastname}}</li>
+        <li>Email - {{model.email}}</li>
+        <li>Salary (AMD) - {{model.salary}}</li>
+        <li>Phone - {{model.phone}}</li>
+    </ul>
+    <button type="button" style="margin-left: 85%" class="btn btn-primary btn-md" ng-click="closeViewDiv()">Close</button>
+
+</div>
+
+<div class="popupDiv" ng-show="updateDiv">
+
+    <h3>Update {{title}}</h3>
+
+    <form name="regForm" ng-submit="update(updateIndex)">
+
+        <label for="first-name">Firstname</label>
+        <input type="text" id="first-name" class="form-control" placeholder="Enter name" name="firstname" required ng-model="model.firstname"><br>
+
+        <label for="last-name">Lastname</label>
+        <input type="text" id="last-name" class="form-control" placeholder="Enter surname" name="lastname" required ng-model="model.lastname"><br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" placeholder="Enter email" name="email" required ng-model="model.email"><br>
+
+        <label for="salary">Salary (AMD)</label>
+        <input type="number" id="salary" class="form-control" placeholder="Enter salary" name="salary" required ng-model="model.salary"><br>
+
+        <label for="phone">Phone (0xxxxxxxx)</label>
+        <input type="tel" id="phone" pattern="0[0-9]{8}" class="form-control" placeholder="Enter phone number" name="phone" required ng-model="model.phone"><br>
+
+        <div style="margin: 15px 0 0 62%">
+
+            <input type="submit" style="margin-left: 65%;" class="btn btn-primary btn-md" name="submit" value="Update"/>
+
+        </div>
+
+    </form>
+
 </div>

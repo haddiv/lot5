@@ -1,25 +1,49 @@
-// app/routes.js
+var employee_model = require('./models/employee');
+var ObjectId = require('mongodb').ObjectID;
 
-// grab the nerd model we just created
-
-var Category = require('./models/category');
-var Answers = require('./models/answer');
 module.exports = function(app) {
 
-    // server routes ===========================================================
-    // handle things like api calls
-    // authentication routes
+    app.get('/api/employee', function(req, res) {
 
+        employee_model.find(function(err, data) {
+            if (err)
+                res.send(err);
+            res.json(data);
+        });
 
+    });
 
+    app.post('/api/employee', function(req, res) {
 
-    // route to handle creating goes here (app.post)
-    // route to handle delete goes here (app.delete)
+        var myData = new employee_model(req.body);
+        myData.save(myData);
 
-    // frontend routes =========================================================
-    // route to handle all angular requests
+        res.json(myData);
+
+    });
+
+    app.delete('/api/employee/:id', function(req, res) {
+
+        employee_model.remove({ _id : ObjectId(req.params.id)}, function(err, data) {
+            if (err)
+                res.send(err);
+            res.send('deleted');
+        });
+
+    });
+
+    app.put('/api/employee', function(req, res) {
+
+        employee_model.update({ _id: ObjectId(req.body._id)}, { $set: req.body}, function(err, data) {
+            if (err)
+                res.send(err);
+            res.send('updated');
+        });
+
+    });
+
     app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load our public/index.html file
+        res.sendfile('./public/index.html');
     });
 
 };
