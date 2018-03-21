@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+		<script src="../src/angularjs-tree.js"></script>
+		<title>Angular tree demo</title>
+		<script>
+		angular.module('demoApp', ['angularjs.tree']).controller('demoController', ['$scope', function($scope) {
+			$scope.blah = function(event){
+				console.log(event);
+			};
+		}]);
+		</script>
+	</head>
+	<body data-ng-app="demoApp">
+		<div data-ng-controller="demoController">
+			 <ul data-tree data-tree-callback="blah(event)">
+				<li>
+					<a href="#one">
+						Root1
+					</a>
+				</li>
+				<li>
+					<a href="#two">
+						Root2
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#two1">A</a></li>
+						<li><a href="#two2">B</a></li>
+						<li><a href="#two3">C</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#three">
+						Root3
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#three1">A</a></li>
+						<li><a href="#three2">B</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#four">
+						Root4
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#four1">A</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

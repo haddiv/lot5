@@ -1,1 +1,1 @@
-angular.module('meanApp', ['ngRoute', 'appRoutes', 'MainCtrl',  'MainService','EmployeeCtrl','StudentCtrl','TeacherCtrl']);
+angular.module('meanApp', ['ngRoute', 'appRoutes','angularjs.tree','ui.tree', 'EmployeeService', 'EmployeeCtrl']);
