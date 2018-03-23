@@ -5,6 +5,7 @@
     "bcrypt": "^1.0.3",
     "body-parser": "latest",
     "express": "latest",
+    "file-system": "^2.2.2",
     "method-override": "latest",
     "mongoose": "latest",
     "mongoose-unique-validator": "^2.0.0"

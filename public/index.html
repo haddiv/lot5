@@ -11,9 +11,14 @@
 
     <link rel="stylesheet" href="build/css/intlTelInput.css">
     <link rel="stylesheet" href="build/css/demo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/angular-ui-tree/dist/angular-ui-tree.min.css">
 
     <!-- JS -->
     <script src="libs/angular/angular.min.js"></script>
+
+    <script src="libs/angularjs-tree/dist/angularjs-tree.min.js"></script>
+    <script type="text/javascript" src="libs/angular-ui-tree/dist/angular-ui-tree.js"></script>
 
     <!-- ANGULAR CUSTOM -->
     <script src="js/controllers/employeeCtrl.js"></script>
@@ -38,7 +43,6 @@
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand" href="/">Create Employee</a>
-
     </nav>
     <div class="jumbotron text-center">
 
@@ -89,7 +93,44 @@
 
     </div>
 
+    <!-- Nested node template -->
+    <script type="text/ng-template" id="nodes_renderer.html">
+        <div ui-tree-handle class="tree-node tree-node-content">
+            <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+                    class="glyphicon"
+                    ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+            {{node.title}}
+            <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+                    class="glyphicon glyphicon-remove"></span></a>
+            <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+                    class="glyphicon glyphicon-plus"></span></a>
+        </div>
+        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+            <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+            </li>
+        </ol>
+    </script>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div ui-tree id="tree-root">
+                <ol ui-tree-nodes ng-model="data">
+                    <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+                </ol>
+            </div>
+        </div>
+
+
+    </div>
+
 </div>
+
+
+
 
 <!-- Load jQuery from CDN so can run demo immediately -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
