@@ -1,26 +1,49 @@
- angular.module('EmployeeService', []).factory('EmployeeS', ['$http', function($http) {
+ angular.module('EmployeeService', []).factory('EmployeeSer', ['$http', function($http) {
 
     return {
-        // call to get all nerds
+
         get : function() {
-           return   $http.get('/api/employee');
+           return $http.get('/api/employee').then(function successCallback(response) {
+
+               return response.data;
+
+           }, function errorCallback(response) {
+
+           });
         },
 
-        // these will work when more API routes are defined on the Node side of things
-        // call to POST and create a new nerd
         create : function(nerdData) {
-            return $http.post('/api/employee', nerdData);
+            return $http.post('/api/employee', nerdData).then(function(response) {
+
+                return response.data;
+
+            }, function(response) {
+
+                console.error("error in posting");
+
+            });
         },
 
-        // call to DELETE a nerd
-        delete : function(id) {
-            return $http.delete('/api/nerds/' + id);
+        delete : function(deleteData) {
+            return    $http.delete('/api/employee/'+ deleteData).then(function(response) {
+
+            }, function(response) {
+
+                console.error("error in deleted");
+
+            });
+
         },
-        calculate: function(a, b){
-            return Math.sqrt(16);
-        },
 
+        put : function(updateData) {
+            return    $http.put('/api/employee',updateData).then(function(response) {
 
-    };
+            }, function(response) {
 
-}]);
+                console.error("error in update");
+
+            });
+
+        }
+
+}}]);

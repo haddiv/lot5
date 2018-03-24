@@ -1,86 +1,105 @@
-// app/routes.js
-
-// grab the nerd model we just created
-
-
 var employee_model = require('./models/employee');
+var ObjectId = require('mongodb').ObjectID;
+var fs = require('file-system');
+
+var arr = [];
+
+var promise = new Promise(function(resolve, reject) {
+
+    function getFiles(dirName, array) {
+
+        fs.readdir(__dirname + '/../'+dirName, function (err, files) {
+
+            for(var i = 0; i < files.length; i++){
+
+                if(files[i].substring(files[i].lastIndexOf('.'),files[i].length) === '.txt'){
+
+                    array.push({"title": files[i], "nodes": []});
+
+                }else {
+
+                    array.push({"title": files[i], "nodes": []});
+                    getFiles(dirName + '/' + files[i], array[i]["nodes"]);
+
+                }
+
+            }
+
+        });
+
+    }
+
+    getFiles('test', arr);
+    resolve(arr);
+
+});
+
 module.exports = function(app) {
 
-    // server routes ===========================================================
-    // handle things like api calls
-    // authentication routes
     app.get('/api/employee', function(req, res) {
 
         employee_model.find(function(err, data) {
-                       if (err)
-                               res.send(err);
-            console.log(data);
-                           res.json(data); // return all nerds in JSON format
-                });
+
+            if (err)
+                res.send(err);
+
+            res.json(data);
+
+        });
 
     });
 
+    app.get('/api/tree', function(req, res) {
+
+        promise.then(function(result){
+
+            res.json(result);
+
+        },function(error ){
+
+            console.log(error.message);
+
+        });
+
+    });
 
     app.post('/api/employee', function(req, res) {
+
         var myData = new employee_model(req.body);
-        myData.save();
-        res.send("item saved to database");
+        myData.save(myData);
+
+        res.json(myData);
+
     });
 
+    app.delete('/api/employee/:id', function(req, res) {
 
+        employee_model.remove({ _id : ObjectId(req.params.id)}, function(err, data) {
 
-
-
-    app.get('/api/employee', function(req, res){
-        Employee.find(function(err, employee){
-            if(err)
+            if (err)
                 res.send(err);
-            res.json(employee);
+            res.send('deleted');
+
         });
+
     });
 
-    app.get('/api/employee/:id', function(req, res){
-        Employee.findOne({_id:req.params.id}, function(err, employe){
-            if(err)
+    app.put('/api/employee', function(req, res) {
+
+        employee_model.update({ _id: ObjectId(req.body._id)}, { $set: req.body}, function(err, data) {
+
+            if (err)
                 res.send(err);
-            res.json(employee);
+            res.send('updated');
+
         });
-    });
-    app.post('/api/employee', function(req, res){
-        Employee.create( req.body, function(err, employee){
-            if(err)
-                res.send(err);
-            res.json(employee);
-        });
+
     });
 
-    app.delete('/api/employee/:id', function(req, res){
-        Employee.findOneAndRemove({_id:req.params.id}, function(err, employee){
-            if(err)
-                res.send(err);
-            res.json(employee);
-        });
-    });
-    app.put('/api/employee/:id', function(req, res){
-        var query = {
-            name:req.body.FirstName,
-            LastName:req.body.LastName,
-            Email:req.body.Email
-
-        };
-        Employee.findOneAndUpdate({_id:req.params.id}, query, function(err, employee){
-            if(err)
-                res.send(err);
-            res.json(employee);
-        });
-    });
-    // route to handle creating goes here (app.post)
-    // route to handle delete goes here (app.delete)
-
-    // frontend routes =========================================================
-    // route to handle all angular requests
     app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load our public/index.html file
+
+        res.sendfile('./public/index.html');
+
     });
 
 };

@@ -2,3 +2,109 @@ div .btn {
     float: left;
     margin-right: 10px;
 }
+
+.create{
+    width: 52%;
+    border-radius: 8px;
+    padding: 5px 30px 30px 30px;
+    position: absolute;
+    top: 5px;
+    left: 25%;
+    background-color: #e4e7d1;
+    box-shadow: 5px 5px 5px grey;
+    z-index: 1;
+}
+
+
+input.ng-valid {
+    background-color: lightgreen;
+}
+
+.viewDiv{
+    width: 40%;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px gray;
+    padding: 15px;
+    position: absolute;
+    background-color: #e5e7e2;
+    top: 100px;
+    left: 28%;
+    z-index: 1;
+}
+
+.viewDiv li{
+    list-style-type: none;
+    color: #58b93d;
+    font-size: 25px;
+}
+
+ul {
+    list-style: none;
+}
+
+.btn {
+    margin-right: 8px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+tr.angular-ui-tree-empty {
+    height:100px
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+
+
+/* --- Tree --- */
+.tree-node {
+    border: 1px solid #dae2ea;
+    background: #f8faff;
+    color: #7c9eb2;
+}
+
+.nodrop {
+    background-color: #f2dede;
+}
+
+.tree-node-content {
+    margin: 10px;
+}
+.tree-handle {
+    padding: 10px;
+    background: #428bca;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

@@ -1,5 +1,4 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-
     $routeProvider
     // home page
         .when('/', {
@@ -8,21 +7,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         }).when('/employee', {
         templateUrl: 'views/employee/list.html',
         controller: 'EmployeeController'
-    }).when('/employee/create', {
-        templateUrl: 'views/employee/create.html',
-        controller: 'EmployeeController'
-    }).when('/employee/edit', {
-        templateUrl: 'views/employee/edit.html',
-        controller: 'EmployeeController'
-    }).when('/employee/show', {
-        templateUrl: 'views/show.html',
-        controller: 'EmployeeControlle'
     }).when('/student', {
         templateUrl: 'views/student/list.html',
         controller: 'StudentController'
     }).when('/teacher', {
         templateUrl: 'views/teacher/list.html',
-        controller: 'StudentController'
+        controller: 'TeacherController'
     });
 
 

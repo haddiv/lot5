@@ -1,0 +1,47 @@
+{
+  "_from": "angularjs-tree",
+  "_id": "angularjs-tree@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha1-JLed+1sS3Kn/I/zxbeN9RMe2C+0=",
+  "_location": "/angularjs-tree",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "angularjs-tree",
+    "name": "angularjs-tree",
+    "escapedName": "angularjs-tree",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angularjs-tree/-/angularjs-tree-0.1.0.tgz",
+  "_shasum": "24b79dfb5b12dca9ff23fcf16de37d44c7b60bed",
+  "_spec": "angularjs-tree",
+  "_where": "C:\\Users\\Vazge\\OneDrive\\Рабочий стол\\lot5",
+  "author": {
+    "name": "Amal Francis"
+  },
+  "bugs": {
+    "url": "https://github.com/amalfra/angularjs-tree/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A simple directive for creating tree lists with angularjs",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.5.1"
+  },
+  "homepage": "https://github.com/amalfra/angularjs-tree#readme",
+  "license": "MIT",
+  "name": "angularjs-tree",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amalfra/angularjs-tree.git"
+  },
+  "version": "0.1.0"
+}
