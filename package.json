@@ -4,7 +4,9 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "install": "^0.10.4",
     "method-override": "~2.0.2",
-    "mongoose": "~5.x"
+    "mongoose": "~5.x",
+    "ng-js-tree": "0.0.10"
   }
 }

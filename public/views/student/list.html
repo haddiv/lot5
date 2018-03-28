@@ -1,20 +1,48 @@
-<div class="container">
-    <h2>{{title}}</h2>
-    <p>{{description}}</p>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="x in list">
-            <td>{{ x.FirstName }}</td>
-            <td>{{ x.LastName }}</td>
-            <td>{{ x.Email }}</td>
-        </tr>
-        </tbody>
-    </table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+   <script src="studentCtrl.js"></script>
+
+
+   <style>
+       table, th, td {
+           border: 1px solid black;
+           padding:5px;
+       }
+       table {
+           border-collapse: collapse;
+           margin:10px;
+       }
+   </style>
+</head>
+<body ng-app="studentCtrl" ng-controller="studentController">
+
+<button ng-click="readCSV()">
+   Display CSV as Data Table
+</button>
+<div id="divID">
+   <table>
+       <tr ng-repeat="x in data">
+           <td ng-repeat="y in x">{{ y }}</td>
+       </tr>
+   </table>
+   <button name="filter">
+   <ul>
+<!--       <li ng-repeat="x in "SalesJan2009.csv" | filter : 'city'">-->
+           {{ x }}
+       </li>
+   </ul>
+   </button>
 </div>
+</div>
+<div>
+   <table>
+   </table>
+</div>
+
+
+</body>
+</html>
