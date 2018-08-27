@@ -26,36 +26,36 @@ module.exports = function(app) {
         myData.save();
         res.send("item saved to database");
     });
+    app.put('/api/employee/{{id}}', function(req, res) {
+        db.get().collection('nameCollection').updateOne(
+            {_id: ObjectID(req.params.id)},
+            {name: req.body.name},
+            function (err, result) {
+                if (err) {
+                    console.log(err);
+                    return res.sendStatus(200);
+                }
+            });
+    });
 
+    app.delete('/api/employee/{{id}}', function(req, res) {
+        db.get().collection("employee").deleteOne(
+            {_id: ObjectID(req.params.id)},
+            function (err, result) {
+                if(err){
+                    console.log(err);
+                    return res.sendStatus(500);
+                }
+                res.sendStatus(200);
+            }
+        )
+    });
     app.get('*', function(req, res) {
         res.sendfile('./public/index.html'); // load our public/index.html file
     });
 
 };
-app.put('/api/employee/{{id}}', function(req, res) {
-    db.get().collection('nameCollection').updateOne(
-        {_id: ObjectID(req.params.id)},
-        {name: req.body.name},
-        function (err, result) {
-            if (err) {
-                console.log(err);
-                return res.sendStatus(200);
-            }
-        });
-});
 
-app.delete('/api/employee/{{id}}', function(req, res) {
-    db.get().collection("employee").deleteOne(
-        {_id: ObjectID(req.params.id)},
-        function (err, result) {
-            if(err){
-                console.log(err);
-                return res.sendStatus(500);
-            }
-            res.sendStatus(200);
-        }
-    )
-});
 exports.get = function () {
     return state.db;
 };

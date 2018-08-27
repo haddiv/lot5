@@ -20,7 +20,8 @@ angular.module('EmployeeCtrl', []).controller('EmployeeController', function($sc
     });
 
     $scope.submit = function() {
-        $http.post('/api/employee',$scope.model).
+
+        $http.post('/api/employee',$scope.user).
         then(function(response) {
             console.log("posted successfully");
         }).catch(function(response) {
